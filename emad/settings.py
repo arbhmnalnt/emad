@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!*uwjyh*)l(=l4_0eqy&8vjxr_m@liq=npn5(jx$qkgolo2-)c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,10 +52,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'emad.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,9 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Cairo'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -122,3 +125,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# default static files settings for PythonAnywhere.
+offlineLocalPath = "/emad"
+
+# see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
+MEDIA_ROOT = offlineLocalPath + '/media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = offlineLocalPath + '/static'
+STATIC_URL = '/static/'
