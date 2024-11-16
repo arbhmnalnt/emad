@@ -130,6 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # default static files settings for PythonAnywhere.
 offlineLocalPath = "/emad"
+onlineLocalPath = "/home/emadasw/emad"
 
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = offlineLocalPath + '/media'
