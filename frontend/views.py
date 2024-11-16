@@ -5,7 +5,10 @@ def landing(request):
     print(f'{request.session["django_language"]}')
     LANGUAGE_CODE = request.session["django_language"]
     ctx = {'LANGUAGE_CODE':LANGUAGE_CODE}
-    return render(request, 'frontend/landing.html', ctx)
+    if LANGUAGE_CODE == 'en':
+      return render(request, 'frontend/en/landing.html', ctx)
+    elif LANGUAGE_CODE == 'ar':
+      return render(request, 'frontend/ar/landing.html', ctx)
 
 def set_language(request):
     if request.method == 'POST':

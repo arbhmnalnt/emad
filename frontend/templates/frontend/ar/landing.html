@@ -1,0 +1,39 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الذاكرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'frontend/ar/css/style.css' %}" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مرحبا بك فى لعبة الذاكرة</h1>
+        <p>
+          تحدى ذاكرتك وحسن مهاراتك!
+        </p>
+        <div class="buttons">
+            <a href="{% url 'play_game' %}">بدء اللعب</a>
+            <a href="{% url 'instructions' %}">إرشادات اللعب</a>
+            <a href="{% url 'high_scores' %}">عرض سجلات اللعب السابقة</a>
+        </div>
+        <div class="language-switcher">
+            <form method="post" action="{% url 'set_language' %}">
+                {% csrf_token %}
+                <select name="language" onchange="this.form.submit()">
+                  <option value="0" disabled>select language / إختر اللغة</option>
+                    <option value="en" {% if LANGUAGE_CODE == "en" %}selected{% endif %}>English</option>
+                    <option value="ar" {% if LANGUAGE_CODE == "ar" %}selected{% endif %}>العربية</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
