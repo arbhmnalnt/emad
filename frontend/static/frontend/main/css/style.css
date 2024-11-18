@@ -1,3 +1,4 @@
+/* General Body Styles */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -7,30 +8,47 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #4CAF50, #8BC34A);
-  color: #fff;
+  background: linear-gradient(90deg, hsla(266, 56%, 42%, 1) 10%, hsla(8, 98%, 59%, 1) 100%);
+  color: #fff; /* Keep the text white to contrast with the dark background */
   text-align: center;
 }
+
+/* Container for content */
 .container {
   max-width: 600px;
   padding: 20px;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 20px; /* Give some space from the top of the page */
+  overflow: auto  ; /* Prevent container from overflowing */
 }
+
+/* Main heading (h1) styling */
 h1 {
   font-size: 3rem;
   margin-bottom: 10px;
+  color: #fff; /* Ensure visibility on gradient background */
 }
+
+/* Paragraph (p) styling */
 p {
   font-size: 1.2rem;
   margin-bottom: 20px;
+  color: #dcdcdc; /* Lighter gray for paragraph text */
 }
+
+/* Button Container Styling */
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
+
+/* Button styling */
 .buttons a {
   background: #fff;
-  color: #4CAF50;
+  color: hsla(266, 56%, 42%, 1); /* Use the purple color from the gradient */
   text-decoration: none;
   padding: 15px 20px;
   border-radius: 5px;
@@ -38,16 +56,41 @@ p {
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
 }
+
+/* Button hover effect */
 .buttons a:hover {
-  background: #4CAF50;
-  color: #fff;
+  background: hsla(8, 98%, 59%, 1); /* Orange color on hover */
+  color: #fff; /* White text on hover */
 }
+
+/* Language Switcher Styling */
 .language-switcher {
   margin-top: 30px;
 }
+
 .language-switcher select {
   padding: 10px;
   border-radius: 5px;
-  border: none;
+  border: 2px solid #fff; /* White border to make it visible */
   font-size: 1rem;
+  background-color: hsla(266, 56%, 42%, 1); /* Purple background */
+  color: #fff; /* White text for the select input */
+  transition: background-color 0.3s, color 0.3s;
 }
+
+/* Language select input hover effect */
+.language-switcher select:hover {
+  background-color: hsla(8, 98%, 59%, 1); /* Orange background on hover */
+  color: #fff; /* Keep text white on hover */
+}
+
+/* Optional - If you have any other elements that need color adjustments */
+.card, .button {
+  color: #fff; /* Ensure card and button text is white on dark backgrounds */
+}
+
+/* Adjust text color for better visibility */
+.card {
+  color: #fff;
+}
+

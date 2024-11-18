@@ -1,38 +1,23 @@
-{% load static %}
+{% extends "frontend/index.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Game</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'frontend/main/css/style.css' %}" />
-    <style>
-
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to Memory Game"</h1>
-        <p>
-          Challenge your memory and improve your skills!
-        </p>
-        <div class="buttons">
-            <a href="{% url 'play_game' %}">Play Game</a>
-            <a href="{% url 'instructions' %}">Instructions"</a>
-            <a href="{% url 'high_scores' %}">View High Scores</a>
-        </div>
-        <div class="language-switcher">
-            <form method="post" action="{% url 'set_language' %}">
-                {% csrf_token %}
-                <select name="language" onchange="this.form.submit()">
-                  <option value="0" disabled>select language / إختر اللغة</option>
-                    <option value="en" {% if LANGUAGE_CODE == "en" %}selected{% endif %}>English</option>
-                    <option value="ar" {% if LANGUAGE_CODE == "ar" %}selected{% endif %}>العربية</option>
-                </select>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+{% block content %}
+<h1>Welcome to Memory Game"</h1>
+<p>
+  Challenge your memory and improve your skills!
+</p>
+<div class="buttons">
+    <a href="{% url 'play_game' %}">Play Game</a>
+    <a href="{% url 'instructions' %}">Instructions"</a>
+    <a href="{% url 'high_scores' %}">View High Scores</a>
+</div>
+<div class="language-switcher">
+    <form method="post" action="{% url 'set_language' %}">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit()">
+          <option value="0" disabled>select language / إختر اللغة</option>
+            <option value="en" {% if LANGUAGE_CODE == "en" %}selected{% endif %}>English</option>
+            <option value="ar" {% if LANGUAGE_CODE == "ar" %}selected{% endif %}>العربية</option>
+        </select>
+    </form>
+</div>
+{% endblock %}

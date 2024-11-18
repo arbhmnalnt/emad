@@ -1,0 +1,22 @@
+{% extends "frontend/index.html" %}
+{% block title %}
+    <title>add new word</title>
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ form.instance.pk|yesno:"Edit Word,Add New Word" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

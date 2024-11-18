@@ -1,0 +1,75 @@
+{% extends "frontend/index.html" %}
+{% block title %}
+    <title>Word List</title>
+{% endblock %}
+
+{% block style %}
+<!-- You can add custom styles here if needed -->
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 pt-3">
+        <h1 class="text-center text-white mb-4">Words List</h1>
+
+        <!-- Filter Form -->
+        <form method="GET" class="mb-4">
+            <div class="form-row">
+                <div class="col">
+                    <select name="language" class="form-control">
+                        <option value="" {% if not request.GET.language %}selected{% endif %}>Select Language</option>
+                        <option value="en" {% if request.GET.language == "en" %}selected{% endif %}>English</option>
+                        <option value="ar" {% if request.GET.language == "ar" %}selected{% endif %}>Arabic</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select name="level" class="form-control">
+                        <option value="" {% if not request.GET.level %}selected{% endif %}>Select Level</option>
+                        <option value="1" {% if request.GET.level == "1" %}selected{% endif %}>Level 1</option>
+                        <option value="2" {% if request.GET.level == "2" %}selected{% endif %}>Level 2</option>
+                        <option value="3" {% if request.GET.level == "3" %}selected{% endif %}>Level 3</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Add New Word Button -->
+        <a href="{% url 'words:word_create' %}" class="btn btn-primary mb-4">Add New Word</a>
+
+        <!-- Table container with horizontal scrolling if needed -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>#</th>
+                        <th>Word</th>
+                        <th>Language</th>
+                        <th>Level</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-white">
+                    {% for word in words %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ word.text }}</td>
+                        <td>{{ word.language }}</td>
+                        <td>{{ word.level }}</td>
+                        <td class="d-flex justify-content-around">
+                            <!-- Edit and Delete Buttons -->
+                            <a href="{% url 'words:word_update' word.id %}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'words:word_delete' word.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<!-- Optional: Add any custom scripts here if needed -->
+{% endblock %}

@@ -3,7 +3,7 @@ from django.utils.translation import activate
 
 def landing(request):
     print(f'{request.session["django_language"]}')
-    LANGUAGE_CODE = request.session["django_language"]
+    LANGUAGE_CODE = request.session.get("django_language", "en")
     ctx = {'LANGUAGE_CODE':LANGUAGE_CODE}
     if LANGUAGE_CODE == 'en':
       return render(request, 'frontend/en/landing.html', ctx)
