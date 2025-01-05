@@ -11,7 +11,8 @@
     <a href="{% url 'high_scores' %}">View High Scores</a>
 </div>
 <div class="language-switcher">
-    <form method="post" action="{% url 'set_language' %}">
+  <!-- Form for Age and Difficulty Level Selection -->
+    <form method="post" action="{% url 'set_language' %}" name="lang">
         {% csrf_token %}
         <select name="language" onchange="this.form.submit()">
           <option value="0" disabled>select language / إختر اللغة</option>
@@ -19,5 +20,21 @@
             <option value="ar" {% if LANGUAGE_CODE == "ar" %}selected{% endif %}>العربية</option>
         </select>
     </form>
+    <form method="post" action="#" name="ageDiffLvl">
+      {% csrf_token %}
+      <div class="form-group">
+          <label for="age">Enter your age:</label>
+          <input type="number" class="form-control" name="age" id="age" placeholder="Your age" required>
+      </div>
+      <div class="form-group">
+          <label for="difficulty">Select Difficulty Level:</label>
+          <select name="difficulty" id="difficulty" required>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Start Game</button>
+  </form>
 </div>
 {% endblock %}

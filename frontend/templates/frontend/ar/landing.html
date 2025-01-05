@@ -1,20 +1,6 @@
-{% load i18n %}
-{% load static %}
+{% extends "frontend/index.html" %}
 
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة الذاكرة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'frontend/main/css/style.css' %}" />
-    <style>
-
-    </style>
-</head>
-<body>
-    <div class="container">
+{% block content %}
         <h1>مرحبا بك فى لعبة الذاكرة</h1>
         <p>
           تحدى ذاكرتك وحسن مهاراتك!
@@ -33,7 +19,22 @@
                     <option value="ar" {% if LANGUAGE_CODE == "ar" %}selected{% endif %}>العربية</option>
                 </select>
             </form>
+            <form method="GET" action="#" name="ageDiffLvl">
+              <div class="form-group">
+                  <label for="age">إدخل عمرك</label>
+                  <input type="number" class="form-control" name="age" id="age" placeholder="ادخل سنك" required>
+              </div>
+              <div class="form-group">
+                  <label for="difficulty">اختر مستوى الصعوبة</label>
+                  <select name="difficulty" id="difficulty" required>
+                      <option value="easy">سهل</option>
+                      <option value="medium">متوسط</option>
+                      <option value="hard">صعب</option>
+                  </select>
+              </div>
+              <button type="submit" class="btn btn-primary">ابدأ اللعب</button>
+          </form>
         </div>
     </div>
-</body>
-</html>
+
+{% endblock %}
